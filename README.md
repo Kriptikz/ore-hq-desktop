@@ -1,14 +1,14 @@
-# Unofficial Ore Mining Desktop App
+# Ore HQ Desktop Pool Mining App
 
-- OreV2 is under active development. The on-chain program can be changed, updated, or deleted at any time causing this desktop app to stop functioning properly.
-- This desktop app is also under active development. Use at your own discretion.
+- Ore HQ Desktop is compatible with Ore HQ server deployments.
+- This desktop app is also active development. Use at your own discretion.
 - *Mac Not Supported* - An issue with Bevy results in excessively high usage. [Bevy Issue 10261](https://github.com/bevyengine/bevy/issues/10261)
 
 
 ## Getting Started
 
 ### Download
-To quickly get started, build are provided as releases. This project is currently in alpha. [Download Here](https://github.com/Kriptikz/ore-desktop-app/releases)
+To quickly get started, build are provided as releases. This project is currently in beta. [Download Here](https://github.com/Kriptikz/ore-hq-desktop/releases)
 Navigate to the Release, download the zip for your platform. Extract the zip into a folder at your desired location (A folder on Desktop will work).
 This zip should have an assets folder, and an executable. Make sure the assets are always right next to your executable or it won't be able to find them and your screen will just be blank.
 
@@ -49,9 +49,6 @@ If you do not have any sol, you will need to get some. You can try the `Devnet` 
 You can also try the quicknode faucet. [quicknode faucet](https://faucet.quicknode.com/solana/devnet)
 
 #### Notes:
-The Orange bus is the last bus that was used.
-The Green flash of the bus is when the transaction was sent and processed on it.
-
 Use the `c` key to get to the config screen again from the mining screen.
 
 The `save.data` file is the password encrypted keypair. If you delete it, you will be prompted to generate/import a new one on the next run.
