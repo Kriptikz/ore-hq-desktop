@@ -304,59 +304,22 @@ pub fn button_save_config(
                 //     ui_image.flip_y = true;
                 // }
 
-                let text_rpc_url = if let Ok(single) = set.p0().get_single() {
-                    single.text.clone()
-                } else {
-                    error!("Failed to get text_rpc_url.");
-                    break;
-                };
-                let threads = if let Ok(single) = set.p1().get_single() {
-                    let threads = single.text.clone().parse::<u64>();
-                    if let Ok(threads) = threads {
-                        threads
-                    } else {
-                        error!("Failed to parse text_threads.");
-                        break;
-                    }
-                } else {
-                    error!("Failed to get text_threads.");
-                    break;
-                };
-                let text_rpc_fetch_interval = if let Ok(single) = set.p2().get_single() {
-                    let parsed = single.text.clone().parse::<u64>();
-                    if let Ok(parsed) = parsed {
-                        parsed
-                    } else {
-                        error!("Failed to parse text_rpc_fetch_interval.");
-                        break;
-                    }
-                } else {
-                    error!("Failed to get text_rpc_fetch_interval.");
-                    break;
-                };
-                let text_rpc_send_interval = if let Ok(single) = set.p3().get_single() {
-                    let parsed = single.text.clone().parse::<u64>();
-                    if let Ok(parsed) = parsed {
-                        parsed
-                    } else {
-                        error!("Failed to parse text_rpc_send_interval.");
-                        break;
-                    }
-                } else {
-                    error!("Failed to get text_rpc_send_interval.");
-                    break;
-                };
-
-                let ws_url =  "ws".to_string() + &text_rpc_url[4..];
+                // let text_rpc_fetch_interval = if let Ok(single) = set.p2().get_single() {
+                //     let parsed = single.text.clone().parse::<u64>();
+                //     if let Ok(parsed) = parsed {
+                //         parsed
+                //     } else {
+                //         error!("Failed to parse text_rpc_fetch_interval.");
+                //         break;
+                //     }
+                // } else {
+                //     error!("Failed to get text_rpc_fetch_interval.");
+                //     break;
+                // };
 
                 event_writer.send(EventSaveConfig(AppConfig {
-                    rpc_url: text_rpc_url.clone(),
-                    ws_url: ws_url.clone(),
-                    // TODO: fix for mainnet
-                    is_devnet: true,
-                    threads,
-                    ui_fetch_interval: text_rpc_fetch_interval,
-                    tx_send_interval: text_rpc_send_interval,
+                    server_url: "ec1ipse.me".to_string(),
+                    ui_fetch_interval: 1000,
                     ..Default::default()
                 }));
             }

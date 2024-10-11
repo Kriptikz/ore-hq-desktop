@@ -1,11 +1,10 @@
 use std::time::{Instant, SystemTime, UNIX_EPOCH};
 
-use bevy::log::{error, info};
+use bevy::log::error;
 use crossbeam_channel::{Receiver, Sender};
-use drillx::{equix, Hash, Solution};
+use drillx_2::{equix, Hash, Solution};
 use ore_api::{
     ID as ORE_ID,
-    instruction,
     state::{Proof, Treasury},
     consts::{BUS_ADDRESSES, CONFIG_ADDRESS, EPOCH_DURATION, MINT_ADDRESS, PROOF,
     TOKEN_DECIMALS, TREASURY_ADDRESS }
@@ -13,39 +12,13 @@ use ore_api::{
 pub use ore_utils::AccountDeserialize;
 use solana_client::nonblocking::rpc_client::RpcClient;
 use solana_sdk::{
-    account::ReadableAccount, clock::Clock, instruction::Instruction, pubkey::Pubkey, sysvar,
+    account::ReadableAccount, clock::Clock, pubkey::Pubkey, sysvar,
 };
 use spl_associated_token_account::get_associated_token_address;
 
 use crate::MiningDataChannelMessage;
 
 pub const ORE_TOKEN_DECIMALS: u8 = TOKEN_DECIMALS;
-
-pub fn get_auth_ix(signer: Pubkey, ) -> Instruction {
-    let proof = proof_pubkey(signer);
-
-    instruction::auth(proof)
-}
-
-pub fn get_mine_ix(signer: Pubkey, solution: Solution, bus: usize) -> Instruction {
-    instruction::mine(signer, signer, BUS_ADDRESSES[bus], solution)
-}
-
-pub fn get_register_ix(signer: Pubkey) -> Instruction {
-    instruction::open(signer, signer, signer)
-}
-
-pub fn get_reset_ix(signer: Pubkey) -> Instruction {
-    instruction::reset(signer)
-}
-
-pub fn get_claim_ix(signer: Pubkey, beneficiary: Pubkey, claim_amount: u64) -> Instruction {
-    instruction::claim(signer, beneficiary, claim_amount)
-}
-
-pub fn get_stake_ix(signer: Pubkey, sender: Pubkey, stake_amount: u64) -> Instruction {
-    instruction::stake(signer, sender, stake_amount)
-}
 
 pub fn get_ore_mint() -> Pubkey {
     MINT_ADDRESS
@@ -231,7 +204,7 @@ pub fn find_hash_par(proof: Proof, cutoff_time: u64, threads: u64, min_difficult
                     let mut total_hashes: u64 = 0;
                     loop {
                         // Create hash
-                        if let Ok(hash) = drillx::hash_with_memory(
+                        for hash in drillx_2::get_hashes_with_memory(
                             &mut memory,
                             &proof.challenge,
                             &nonce.to_le_bytes(),

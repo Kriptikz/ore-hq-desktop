@@ -2841,6 +2841,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "drillx_2"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "af4e3aca4ae86ab0d0050f50b322adab7c0e93904896a5c60bdb33324ea1d36a"
+dependencies = [
+ "equix",
+ "serde",
+ "sha3 0.10.8",
+ "strum",
+]
+
+[[package]]
 name = "dynasm"
 version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5146,9 +5158,9 @@ dependencies = [
 
 [[package]]
 name = "ore-api"
-version = "2.1.9"
+version = "2.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "26f004e50a7fba301eb53caa4f8ce772c1a512f314de64cff580f90fb1dff8d1"
+checksum = "0c67c8c00902d0cb31d7e1bdcc6caf81c80e4a1f11ca48054eb609e41b6065b4"
 dependencies = [
  "array-const-fn-init",
  "bytemuck",
@@ -5178,7 +5190,7 @@ dependencies = [
  "copypasta",
  "core_affinity",
  "crossbeam-channel",
- "drillx",
+ "drillx_2",
  "open",
  "ore-api",
  "ore-utils",
@@ -5197,9 +5209,9 @@ dependencies = [
 
 [[package]]
 name = "ore-utils"
-version = "2.1.9"
+version = "2.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a2d6933b14c84fb91ad7ab2e8fccff589884a81507c1a198dea4f03f3180ef4"
+checksum = "6c92cb0b8a4c9583113b78c87a5372d71825ec3432402cb843e1ffc6af9f6b7d"
 dependencies = [
  "bytemuck",
  "solana-program",

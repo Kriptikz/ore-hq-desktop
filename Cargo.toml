@@ -23,9 +23,9 @@ serde = "1.0.199"
 #ore-utils = { path = "../regolith-labs/ore/utils"}
 #ore-api = { path = "../regolith-labs/ore/api"}
 #drillx = { path = "../regolith-labs/forks/drillx/drillx"}
-ore-api = "2.1.8"
-ore-utils = "2.1.8"
-drillx = "2.1.0"
+ore-api = "=2.1.8"
+ore-utils = "=2.1.8"
+drillx_2 = "1.0.0"
 solana-client = "1.18.12"
 solana-sdk = "1.18.12"
 spl-token = { version = "^4", features = ["no-entrypoint"] }
